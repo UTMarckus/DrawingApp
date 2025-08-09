@@ -7,4 +7,5 @@
     <string name="color_blue_light">Color blue light</string>
     <string name="color_blue_dark">Color blue dark</string>
     <string name="color_purple">Color purple</string>
+    <string name="gallery_image_txt">Gallery image</string>
 </resources>
