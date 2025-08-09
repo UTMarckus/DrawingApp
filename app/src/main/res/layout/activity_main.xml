@@ -12,18 +12,150 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tools_menu"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
-    
-    <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/brush_button"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:layout_constraintBottom_toBottomOf="@id/drawing_view"
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/color_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:src="@drawable/ic_brush"
-        android:scaleType="fitXY"/>
+        app:layout_constraintBottom_toTopOf="@id/tools_menu">
+
+        <ImageButton
+            android:id="@+id/red_button"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="2dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/orange_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@android:color/holo_red_dark"/>
+
+        <ImageButton
+            android:id="@+id/orange_button"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="2dp"
+            app:layout_constraintStart_toEndOf="@id/red_button"
+            app:layout_constraintEnd_toStartOf="@id/yellow_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@android:color/holo_orange_dark"/>
+
+        <ImageButton
+            android:id="@+id/yellow_button"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="2dp"
+            app:layout_constraintStart_toEndOf="@id/orange_button"
+            app:layout_constraintEnd_toStartOf="@id/green_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@android:color/holo_orange_light"/>
+
+        <ImageButton
+            android:id="@+id/green_button"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="2dp"
+            app:layout_constraintStart_toEndOf="@id/yellow_button"
+            app:layout_constraintEnd_toStartOf="@id/blue_light_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@android:color/holo_green_dark"/>
+
+        <ImageButton
+            android:id="@+id/blue_light_button"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="2dp"
+            app:layout_constraintStart_toEndOf="@id/green_button"
+            app:layout_constraintEnd_toStartOf="@id/blue_dark_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@android:color/holo_blue_light"/>
+
+        <ImageButton
+            android:id="@+id/blue_dark_button"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="2dp"
+            app:layout_constraintStart_toEndOf="@id/blue_light_button"
+            app:layout_constraintEnd_toStartOf="@id/purple_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@android:color/holo_blue_dark"/>
+
+        <ImageButton
+            android:id="@+id/purple_button"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="2dp"
+            app:layout_constraintStart_toEndOf="@id/blue_dark_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@android:color/holo_purple"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/tools_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/brush_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/save_button"
+            android:src="@drawable/ic_brush"
+            android:scaleType="fitXY"/>
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/save_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/brush_button"
+            app:layout_constraintEnd_toStartOf="@id/gallery_button"
+            android:src="@drawable/ic_save"
+            android:scaleType="fitXY"/>
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/gallery_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/save_button"
+            app:layout_constraintEnd_toStartOf="@id/undo_button"
+            android:src="@drawable/ic_gallery"
+            android:scaleType="fitXY"/>
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/undo_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/gallery_button"
+            app:layout_constraintEnd_toStartOf="@id/color_picker_button"
+            android:src="@drawable/ic_undo"
+            android:scaleType="fitXY"/>
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/color_picker_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/undo_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/ic_color_wheel"
+            android:scaleType="fitXY"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
