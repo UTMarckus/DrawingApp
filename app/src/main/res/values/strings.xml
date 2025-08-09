@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">DrawingApp</string>
+    <string name="color_red">Color red</string>
+    <string name="color_orange">Color orange</string>
+    <string name="color_yellow">Color yellow</string>
+    <string name="color_green">Color green</string>
+    <string name="color_blue_light">Color blue light</string>
+    <string name="color_blue_dark">Color blue dark</string>
+    <string name="color_purple">Color purple</string>
 </resources>

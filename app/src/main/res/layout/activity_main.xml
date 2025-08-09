@@ -33,7 +33,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/orange_button"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:background="@android:color/holo_red_dark"/>
+            android:background="@drawable/red_bg"
+            android:contentDescription="@string/color_red"/>
 
         <ImageButton
             android:id="@+id/orange_button"
@@ -43,7 +44,8 @@
             app:layout_constraintStart_toEndOf="@id/red_button"
             app:layout_constraintEnd_toStartOf="@id/yellow_button"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:background="@android:color/holo_orange_dark"/>
+            android:background="@drawable/orange_bg"
+            android:contentDescription="@string/color_orange"/>
 
         <ImageButton
             android:id="@+id/yellow_button"
@@ -53,7 +55,8 @@
             app:layout_constraintStart_toEndOf="@id/orange_button"
             app:layout_constraintEnd_toStartOf="@id/green_button"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:background="@android:color/holo_orange_light"/>
+            android:background="@drawable/yellow_bg"
+            android:contentDescription="@string/color_yellow"/>
 
         <ImageButton
             android:id="@+id/green_button"
@@ -63,7 +66,8 @@
             app:layout_constraintStart_toEndOf="@id/yellow_button"
             app:layout_constraintEnd_toStartOf="@id/blue_light_button"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:background="@android:color/holo_green_dark"/>
+            android:background="@drawable/green_bg"
+            android:contentDescription="@string/color_green"/>
 
         <ImageButton
             android:id="@+id/blue_light_button"
@@ -73,7 +77,8 @@
             app:layout_constraintStart_toEndOf="@id/green_button"
             app:layout_constraintEnd_toStartOf="@id/blue_dark_button"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:background="@android:color/holo_blue_light"/>
+            android:background="@drawable/blue_light_bg"
+            android:contentDescription="@string/color_blue_light"/>
 
         <ImageButton
             android:id="@+id/blue_dark_button"
@@ -83,7 +88,8 @@
             app:layout_constraintStart_toEndOf="@id/blue_light_button"
             app:layout_constraintEnd_toStartOf="@id/purple_button"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:background="@android:color/holo_blue_dark"/>
+            android:background="@drawable/blue_dark_bg"
+            android:contentDescription="@string/color_blue_dark"/>
 
         <ImageButton
             android:id="@+id/purple_button"
@@ -93,7 +99,8 @@
             app:layout_constraintStart_toEndOf="@id/blue_dark_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:background="@android:color/holo_purple"/>
+            android:background="@drawable/purple_bg"
+            android:contentDescription="@string/color_purple"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
