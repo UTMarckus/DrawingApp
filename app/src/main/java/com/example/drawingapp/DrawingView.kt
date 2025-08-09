@@ -7,7 +7,9 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Path
 import android.util.AttributeSet
+import android.view.MotionEvent
 import android.view.View
+import androidx.core.graphics.createBitmap
 
 class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs) {
 
@@ -27,6 +29,28 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs) 
         setUpDrawing()
     }
 
+    override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
+        super.onSizeChanged(w, h, oldw, oldh)
+
+        canvasBitmap = createBitmap(w, h, Bitmap.Config.ARGB_8888)
+        canvas = Canvas(canvasBitmap)
+    }
+
+    override fun onDraw(canvas: Canvas) {
+        super.onDraw(canvas)
+
+        canvas.drawBitmap(canvasBitmap, 0f, 0f, drawPaint)
+
+        if (!drawPath.isEmpty) {
+            drawPaint.apply {
+                strokeWidth = drawPath.brushThickness
+                color = drawPath.color
+            }
+
+            canvas.drawPath(drawPath, drawPaint)
+        }
+    }
+
 
     private fun setUpDrawing() {
         drawPaint = Paint().apply {
@@ -40,7 +64,5 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs) 
         brushSize = 20F
     }
 
-    internal inner class FingerPath(val color: Int, brushThickness: Float) : Path() {
-
-    }
+    internal inner class FingerPath(val color: Int, val brushThickness: Float) : Path()
 }
