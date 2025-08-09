@@ -15,8 +15,10 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs) 
 
     // drawing path
     private lateinit var drawPath: FingerPath
+
     // defines what to draw
     private lateinit var canvasPaint: Paint
+
     // defines how to draw
     private lateinit var drawPaint: Paint
     private lateinit var canvas: Canvas
@@ -51,6 +53,30 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs) 
         }
     }
 
+    override fun onTouchEvent(event: MotionEvent?): Boolean {
+        val touchX = event?.x
+        val touchY = event?.y
+
+        when (event?.action) {
+            MotionEvent.ACTION_DOWN -> drawPath.apply {
+                color = brushColor
+                brushThickness = brushSize
+                reset()
+                rMoveTo(touchX!!, touchY!!)
+
+            }
+
+            MotionEvent.ACTION_MOVE -> drawPath.lineTo(touchY!!, touchX!!)
+
+            MotionEvent.ACTION_UP -> drawPath = FingerPath(brushColor, brushSize)
+
+            else -> return false
+        }
+
+        invalidate()
+
+        return true
+    }
 
     private fun setUpDrawing() {
         drawPaint = Paint().apply {
@@ -64,5 +90,5 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs) 
         brushSize = 20F
     }
 
-    internal inner class FingerPath(val color: Int, val brushThickness: Float) : Path()
+    internal inner class FingerPath(var color: Int, var brushThickness: Float) : Path()
 }
