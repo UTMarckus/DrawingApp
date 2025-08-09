@@ -66,7 +66,7 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs) 
 
             }
 
-            MotionEvent.ACTION_MOVE -> drawPath.lineTo(touchY!!, touchX!!)
+            MotionEvent.ACTION_MOVE -> drawPath.lineTo(touchX!!, touchY!!)
 
             MotionEvent.ACTION_UP -> drawPath = FingerPath(brushColor, brushSize)
 
