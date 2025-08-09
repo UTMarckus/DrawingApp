@@ -27,6 +27,8 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs) 
     private var brushColor = Color.BLACK
     private var brushSize = 0F
 
+    private val paths = mutableListOf<FingerPath>()
+
     init {
         setUpDrawing()
     }
@@ -42,6 +44,15 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs) 
         super.onDraw(canvas)
 
         canvas.drawBitmap(canvasBitmap, 0f, 0f, drawPaint)
+
+        paths.forEach { path ->
+            drawPaint.apply {
+                strokeWidth = path.brushThickness
+                color = path.color
+            }
+
+            canvas.drawPath(path, drawPaint)
+        }
 
         if (!drawPath.isEmpty) {
             drawPaint.apply {
@@ -68,7 +79,10 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs) 
 
             MotionEvent.ACTION_MOVE -> drawPath.lineTo(touchX!!, touchY!!)
 
-            MotionEvent.ACTION_UP -> drawPath = FingerPath(brushColor, brushSize)
+            MotionEvent.ACTION_UP -> {
+                paths.add(drawPath)
+                drawPath = FingerPath(brushColor, brushSize)
+            }
 
             else -> return false
         }
