@@ -2,12 +2,13 @@ package com.example.drawingapp
 
 import android.app.Dialog
 import android.os.Bundle
+import android.view.View
 import android.widget.SeekBar
 import androidx.appcompat.app.AppCompatActivity
 import com.example.drawingapp.databinding.ActivityMainBinding
 import com.example.drawingapp.databinding.DialogBrushBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var bindingMainActivity: ActivityMainBinding
     private lateinit var bindingBrushDialog: DialogBrushBinding
@@ -22,6 +23,14 @@ class MainActivity : AppCompatActivity() {
         bindingMainActivity.drawingView.changeBrushSize(23F)
 
         bindingMainActivity.brushButton.setOnClickListener { showBrushChooserDialog() }
+
+        bindingMainActivity.blueDarkButton.setOnClickListener(this)
+        bindingMainActivity.blueLightButton.setOnClickListener(this)
+        bindingMainActivity.greenButton.setOnClickListener(this)
+        bindingMainActivity.orangeButton.setOnClickListener(this)
+        bindingMainActivity.purpleButton.setOnClickListener(this)
+        bindingMainActivity.redButton.setOnClickListener(this)
+        bindingMainActivity.yellowButton.setOnClickListener(this)
     }
 
     private fun showBrushChooserDialog() {
@@ -49,5 +58,17 @@ class MainActivity : AppCompatActivity() {
         })
 
         brushDialog.show()
+    }
+
+    override fun onClick(view: View?) {
+        when(view?.id) {
+            R.id.blue_dark_button -> bindingMainActivity.drawingView.setBrushColor("#0099CC")
+            R.id.blue_light_button -> bindingMainActivity.drawingView.setBrushColor("#33b5e5")
+            R.id.green_button -> bindingMainActivity.drawingView.setBrushColor("#99CC00")
+            R.id.orange_button -> bindingMainActivity.drawingView.setBrushColor("#FFBB33")
+            R.id.purple_button -> bindingMainActivity.drawingView.setBrushColor("#AA66CC")
+            R.id.red_button -> bindingMainActivity.drawingView.setBrushColor("#FF4444")
+            R.id.yellow_button -> bindingMainActivity.drawingView.setBrushColor("#F8FF37")
+        }
     }
 }
