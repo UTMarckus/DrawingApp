@@ -115,9 +115,21 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs) 
         drawPaint.strokeWidth = brushSize
     }
 
-    fun setBrushColor(newColor: String) {
-        brushColor = newColor.toColorInt()
+    fun setBrushColor(newColor: Any) {
+        brushColor = when(newColor) {
+            is String -> newColor.toColorInt()
+            is Int -> newColor
+            else -> Color.BLACK
+        }
+
         drawPaint.color = brushColor
+    }
+
+    fun undoPath() {
+        if (paths.isNotEmpty()) {
+            paths.removeLastOrNull()
+            invalidate()
+        }
     }
 
     internal inner class FingerPath(var color: Int, var brushThickness: Float) : Path()
